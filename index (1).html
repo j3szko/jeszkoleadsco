@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sean Jeszko — Facebook Ads for Home Service Companies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --bg2: #efeae0;
+      --bg3: #e8e0d0;
+      --ink: #1a1814;
+      --ink-dim: #6b6458;
+      --ink-faint: #b0a898;
+      --rust: #c45c2a;
+      --rust-lt: #d97a4a;
+      --rust-dk: #8a3d1a;
+      --border: rgba(26,24,20,0.10);
+      --border-dim: rgba(26,24,20,0.06);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+    /* NAV */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .wordmark {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--rust);
+      padding: 9px 20px;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--rust-dk); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--rust) 0%, transparent 60%);
+    }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--rust);
+      display: inline-block;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 32px;
+      max-width: 580px;
+      letter-spacing: -0.5px;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--rust);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--ink-dim);
+      max-width: 480px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* SECTIONS */
+    section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* OFFER CARD */
+    .offer-card {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .offer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--rust);
+    }
+    .offer-card h2 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--bg);
+      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+    .offer-card h2 em { font-style: italic; font-weight: 700; color: var(--rust-lt); }
+    .offer-card p {
+      font-size: 15px;
+      color: rgba(247,244,239,0.65);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+    .offer-card p:last-child { margin-bottom: 0; }
+    .offer-card strong { color: var(--bg); font-weight: 500; }
+    .rust-rule { width: 32px; height: 1px; background: var(--rust); margin: 28px 0; }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; }
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .step:last-child { border-bottom: none; padding-bottom: 0; }
+    .step:first-child { padding-top: 0; }
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--rust);
+      font-weight: 700;
+      padding-top: 3px;
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+    .step p {
+      font-size: 14px;
+      color: var(--ink-dim);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* WHO */
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .check-list li {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      color: var(--ink-dim);
+      line-height: 1.65;
+      font-weight: 300;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before {
+      content: '→';
+      color: var(--rust);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    .check-list li strong { color: var(--ink); font-weight: 500; }
+
+    /* CONTACT */
+    .contact-grid { display: flex; flex-direction: column; margin-top: 8px; }
+    .contact-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border-dim);
+      flex-wrap: wrap;
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      flex-shrink: 0;
+    }
+    .contact-value { font-size: 14px; color: var(--ink); font-weight: 400; }
+    .contact-value a { color: var(--rust); text-decoration: none; }
+    .contact-value a:hover { text-decoration: underline; }
+
+    .cta-block {
+      margin-top: 52px;
+      padding: 44px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      border-left: 3px solid var(--rust);
+    }
+    .cta-block p {
+      font-size: 15px;
+      color: var(--ink-dim);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      font-weight: 300;
+      max-width: 480px;
+    }
+    .cta-block strong { color: var(--ink); font-weight: 500; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--rust);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .cta-btn:hover { background: var(--rust-dk); }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 0;
+      text-align: center;
+    }
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 64px 0 52px; }
+      .offer-card, .cta-block { padding: 28px 24px; }
+      .contact-item { flex-direction: column; gap: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <span class="wordmark">Sean Jeszko</span>
+      <a href="https://whatsapp.link/jeszkoleadsco" target="_blank" rel="noopener" class="nav-cta">Get in Touch</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Facebook Ads · Home Service Companies</p>
+      <h1>I find the leaks<br>in your ads.<br><em>Then I fix them.</em></h1>
+      <p class="hero-sub">I work with foundation repair and pressure washing companies whose ads are underperforming or not running at all. I am not an agency. I am a media buyer looking to join your team.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="section-label">The Offer</p>
+      <div class="offer-card">
+        <h2>In-House Media Buyer — <em>Not an Agency</em></h2>
+        <p>I audit what you are running, rewrite what is not working, and build campaigns that are structured to get leads, not just impressions.</p>
+        <div class="rust-rule"></div>
+        <p><strong>I am not an ads agency. I am not looking for clients.</strong> I am a media buyer and I would love to join your team internally, own your paid media, and be accountable to your results.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="section-label">How It Works</p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div>
+            <h3>You reach out</h3>
+            <p>One message. No forms, no calls required before we have even spoken.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div>
+            <h3>I audit your current ads</h3>
+            <p>I pull everything from the Meta Ad Library and tell you exactly what is wrong and why leads are costing more than they should, or not coming in at all.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div>
+            <h3>I build and run the campaigns</h3>
+            <p>New creatives, new copy, proper structure. I handle the paid media. You handle the jobs that come in.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div>
+            <h3>We review the numbers together</h3>
+            <p>Cost per lead, lead volume, what converted. Real data. We build from there.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="section-label">Who This Is For</p>
+      <ul class="check-list">
+        <li><strong>Foundation repair or pressure washing companies</strong> running ads that are not converting</li>
+        <li>Owners who have <strong>tried Facebook ads before and felt burned</strong> by agencies</li>
+        <li>Companies spending on ads <strong>without knowing what they are getting</strong> for it</li>
+        <li>Owners who are <strong>too busy to manage ads</strong> and need someone to own the results internally</li>
+        <li>Companies with <strong>no ads running at all</strong> while competitors do</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="mailto:jeszkoleadsco@gmail.com">jeszkoleadsco@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value"><a href="https://whatsapp.link/jeszkoleadsco" target="_blank" rel="noopener">@jeszkoleadsco</a> &nbsp;·&nbsp; +1 234 567 7670</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value"><a href="https://linkedin.com/in/sean-jeszko-a44898404" target="_blank" rel="noopener">Sean Jeszko</a></span>
+        </div>
+      </div>
+
+      <div class="cta-block">
+        <p><strong>The fastest way to start:</strong> send a WhatsApp message or email. Tell me your company name. I will pull your ad account before we even get on a call so the first conversation is actually useful.</p>
+        <a href="https://whatsapp.link/jeszkoleadsco" target="_blank" rel="noopener" class="cta-btn">Send a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>JESZKO &mdash; FACEBOOK ADS FOR HOME SERVICE COMPANIES &nbsp;&middot;&nbsp; SEPTEMBER 2026</p>
+  </footer>
+
+</body>
+</html>
